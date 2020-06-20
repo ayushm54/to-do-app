@@ -1,0 +1,27 @@
+<div style="margin-top: 25px;">
+  <ion-card [color]="even ? 'tertiary' : 'danger'" *ngFor="let item of tasks; let even = even">
+    <ion-card-content>
+      <div *ngIf="!item.completed" style="display: inline;">
+        <ion-chip (click)="markTaskComplete($event,item)" >
+          <ion-icon style="float: left; margin-left:-4px;" name="checkmark" color="primary"></ion-icon>
+        </ion-chip>
+          {{item.name}}
+          <div style="margin-left: 47px;margin-top: -9px;">
+            {{item.createdDate | date: 'EEEE, MMMM d'}}
+          </div>
+      </div>
+      <div *ngIf="item.completed" style="margin-left: 47px;">
+        <p style="text-decoration: line-through;">{{item.name}}</p>
+        <div style="color: lightgray;">
+          {{item.createdDate | date: 'EEEE, MMMM d'}}
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button style="--background:red;--border-radius:13%;" (click)="addTask()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

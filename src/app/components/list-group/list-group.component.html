@@ -1,0 +1,29 @@
+<div *ngIf="taskLists==''" class="wrapper">
+  <h6 style="color: #808080;">No list yet! Please add one.</h6>
+</div>
+
+<div *ngIf="taskLists!=''">
+    <ion-card  [color]="even ? 'tertiary' : 'danger'" *ngFor="let item of taskLists; let even = even">
+      <ion-card-header style="border-bottom: 1px solid white;">
+        <div style="display: flex; justify-content: space-between;">
+          <ion-card-title>{{ item.listName }}</ion-card-title>
+          <div style="float: right; margin-top: -5px">
+          <ion-chip (click)="editList(item)"  >
+            <ion-icon name="create" style="float: left;"></ion-icon> 
+          </ion-chip>
+          <ion-chip (click)="deleteList(item)">
+            <ion-icon name="trash" style="float: left;"></ion-icon>
+          </ion-chip>
+          </div>
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="none" style="background-color: transparent !important;">
+          <ion-item color="none" *ngFor="let listItem of item.listItems">
+            <p style="font-size: 16px;text-decoration: line-through;" *ngIf="listItem.completed">{{listItem.name}}</p>
+            <p style="font-size: 16px;" *ngIf="!listItem.completed">{{listItem.name}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+</div>

@@ -25,3 +25,36 @@
 #container a {
   text-decoration: none;
 }
+
+#contentHeading {
+  position: relative;
+  font-size: 30px;
+  z-index: 2;
+  overflow: hidden;
+  text-align: center;
+  font-weight: bolder;
+}
+#contentHeading:before, #contentHeading:after {
+  position: absolute;
+  top: 51%;
+  overflow: hidden;
+  width: 50%;
+  height: 1px;
+  content: '\a0';
+  background-color: #D3D3D3;
+}
+#contentHeading:before {
+  margin-left: -50%;
+  text-align: right;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-custom-alert-class .alert-wrapper{
+  --background: gray;
+}

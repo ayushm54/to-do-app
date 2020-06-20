@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <div style="float: left;">
+        <h1 style="display: inline;">
+          <img style="width: 10%;" src="../../assets/to-do-list.png" align="left">
+          My To Dos</h1>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div style="padding-left: 20px;">
+  <h1 style="color:#3880ff;">
+    <ion-icon name="create"></ion-icon>
+    <span>{{ itemToEdit.listName }}</span>
+  </h1>
+</div>
+<div style="padding-left: 44px; color:lightgray;">
+  {{ completedTaskCount }} of {{ itemToEdit.listItems.length }} tasks completed
+</div>
+<div style="border: 1px solid lightgray; margin-left: 44px; margin-top: 10px;"></div>
+<ion-content>
+  <app-edit-tasks [tasks]="itemToEdit.listItems" (updateTaskForEdit)="updateTaskForEdit()"></app-edit-tasks>
+</ion-content>
